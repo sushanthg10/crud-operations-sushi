@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableConfigurationProperties
 @ConfigurationProperties
-public class configo {
+public class configurations {
     public String getName() {
         return name;
     }

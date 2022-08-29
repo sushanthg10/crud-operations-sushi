@@ -11,6 +11,15 @@ repositories {
     mavenCentral()
 }
 
+task stage(dependsOn: ['build', 'clean'])
+build.mustRunAfter clean
+
+task copyToLib(type: Copy) {
+    into "$buildDir/libs"
+    from(configurations.implementation)
+}
+
+stage.dependsOn(copyToLib)
 
 //task fatJar(type: Jar) {
 //    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
