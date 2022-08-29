@@ -14,12 +14,11 @@ repositories {
 task stage(dependsOn: ['build', 'clean'])
 build.mustRunAfter clean
 
-task copyToLib(type: Copy) {
-    into "$buildDir/libs"
-    from(configurations.implementation)
+task copyLibs(type: Copy) {
+    from configurations.compileClasspath
+    into "$project.rootDir/build/libs/"
 }
-
-stage.dependsOn(copyToLib)
+stage.dependsOn(copyLibs)
 
 //task fatJar(type: Jar) {
 //    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
